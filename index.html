@@ -21,17 +21,27 @@
     color:var(--text);
     overflow-y:auto;
     position:relative;
-    background:url('motmot.jpg') center/cover no-repeat fixed;
   }
 
-  /* overlay for readability */
+  /* background video */
+  video.bg-video {
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+  }
+
+  /* soft overlay for readability */
   body::before {
     content:"";
     position:fixed;
     top:0; left:0;
     width:100%; height:100%;
-    background:rgba(255,255,255,0.2);
-    z-index:0;
+    background:rgba(255,255,255,0.35);
+    z-index:-1;
+    backdrop-filter: blur(2px);
   }
 
   .card {
@@ -42,7 +52,7 @@
     box-shadow:0 20px 60px rgba(0,0,0,0.3);
     border:2px solid rgba(255,77,109,0.15);
     max-width:900px;
-    width:100%;
+    width:90%;
     padding:34px;
     backdrop-filter:blur(8px);
     margin:60px auto;
@@ -77,7 +87,6 @@
     padding:14px 18px;
     line-height:1.6;
     font-size:16px;
-    box-shadow:inset 0 1px 2px rgba(255,255,255,0.8);
     color:#4b2a39;
     white-space:pre-wrap;
     margin-bottom:20px;
@@ -103,7 +112,7 @@
     gap:10px;
     cursor:pointer;
     box-shadow:0 8px 22px rgba(255,0,60,0.25);
-    transition:transform .15s ease,box-shadow .15s ease;
+    transition:transform .15s ease;
   }
 
   .play-btn:hover { transform:scale(1.04); }
@@ -143,6 +152,12 @@
 </style>
 </head>
 <body>
+
+  <!-- video background -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
   <div class="card">
     <div class="title">Happy 2nd Monthsarry 💖</div>
     <div class="sub">To my baby, my love, my everything — <span class="highlight">Trisha T. Cosep</span></div>
@@ -157,8 +172,6 @@ Two months pa lang pero grabe na ka daghan ug memories nato, love. Every moment 
 Thank you so much, mylove, sa imong love, care, ug effort nga kanunay nimo ginahatag sa akoa. Sa imong pag-anhi palang appreciated na kaayo na, sa imong pagpakita nga gi value ko, ug sa imong pagpa-feel nga importante ko, I really appreciate everything. Dili lang ko thankful, love, pero proud kaayo ko nga ikaw akong girlfriend🥰🥰
 
 And love, I hope you don’t change, ha? Stay the same sweet, caring, and maldita person nga akong gi pangga. Kay mao na nga version nimo ang akong gi love ug gi keep always hehe, stay honest, pure, and loyal baby.
-
-I know daghan patag maagian puhon, mga struggles, sad moments, happy moments, mga moments nga dili ta magkasinabot but lets choose each other always baby, lets face every challenges thown to us, lets build our relationship stronger than everrr!!! HAHAHAHAHA. Sensya kana sa mga sungog, ug pangpangluod nako ha hehe lovelove kasi kita ihhh
 
 Sayang lang nga dili ta magkuyog karon kay naa pa’y klase😔😔 pero okay ra, bawi ta sunod kay naa pay mas nindot nga plan si Lord for us🫰🏻
 
@@ -195,7 +208,7 @@ btn.addEventListener('click', () => {
   }
 });
 
-// create floating hearts
+// floating hearts
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
